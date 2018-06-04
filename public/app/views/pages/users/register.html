@@ -1,0 +1,53 @@
+<div class="page-header">
+    <h1>
+          User Registration
+    </h1>  
+  </div>
+  <div style="margin-top:3%;margin-left: 10%;margin-right: 10%">
+
+
+  <form name="regForm" ng-submit="register.regUser();" novalidate>
+        <div ng-class="{'has-success':(regForm.name.$valid && !regForm.name.$pristine),'has-error': (!regForm.name.$valid && !regForm.name.$pristine)||(!regForm.name.$valid && regForm.submitted) }">
+           
+            <label>
+                    Name:
+                </label>
+                <input class="form-control" type="text" name="name" placeholder="Enter Name" ng-model="register.regData.name" required>
+               <p class="help-block" ng-show="(!regForm.name.$pristine &&  regForm.name.$error.required) ||(regForm.$submitted && regForm.name.$error.required)">
+                This field is required
+               </p>
+                <br>
+          <label>
+            </div>
+      
+          Email:
+      </label>
+      <input class="form-control" type="text" name="email" placeholder="Enter email" ng-model="register.regData.email">
+      <br>
+      <label>
+              UserName:
+          </label>
+          <input class="form-control" type="text" name="username" placeholder="Enter username" ng-model="register.regData.username">
+          <br>
+          <label>
+                  Password:
+              </label>
+              <input class="form-control" type="password" name="password" placeholder="Enter password" ng-model="register.regData.password">
+              <br>
+        <button class="btn btn-primary" type="submit">Registration</button>
+  </form>
+  <br>
+  <div class="jumbotron text-center" ng-show="register.loading">
+      <span class="glyhicon glyhicon-repeat spinner"></span>
+  <p>Loading...</p>
+  <br>
+  <br>
+    </div>
+  <div class="row show-hide-message" ng-show="register.successMsg">
+      <div class="alert alert-success">{{register.successMsg}}</div>
+  </div>
+  <br>
+  <div class="row show-hide-message"  ng-show="register.errorMsg">
+    <div class="alert alert-danger">{{register.errorMsg}}</div>
+</div>
+</div>
